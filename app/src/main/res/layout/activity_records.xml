@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary"
+    >
+
+    <LinearLayout
+        android:id="@+id/headerRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+        <TextView
+            android:id="@+id/cat"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:text="Category"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            />
+        <TextView
+            android:id="@+id/bname"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:text="Book Name"
+            android:layout_marginStart="5dp"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            />
+        <TextView
+            android:id="@+id/in"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:text="Books In"
+            android:layout_marginStart="5dp"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            />
+        <TextView
+            android:id="@+id/sold"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:text="Books Sold"
+            android:layout_marginStart="5dp"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:id="@+id/expected"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:text="Expected Sales"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/textViewHeaderAge"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:text="Total Sales"
+            android:layout_marginStart="5dp"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/headerRow"
+        android:background="@drawable/record_table_border" />
+</RelativeLayout>
