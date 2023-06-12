@@ -1,5 +1,6 @@
 package com.barakadanie.bcd.pentopaperwritersltd.User;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.barakadanie.bcd.pentopaperwritersltd.R;
 
@@ -16,7 +19,8 @@ import com.barakadanie.bcd.pentopaperwritersltd.R;
  * create an instance of this fragment.
  */
 public class UpdateRecordFragment extends Fragment {
-
+    TextView header;
+    ImageView back;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -57,10 +61,13 @@ public class UpdateRecordFragment extends Fragment {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_update_record, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_update_record, container, false);
+        back=view.findViewById(R.id.back);
+        header=view.findViewById(R.id.pageHeader);
+        header.setText("Update Record");
+        return view;
     }
 }

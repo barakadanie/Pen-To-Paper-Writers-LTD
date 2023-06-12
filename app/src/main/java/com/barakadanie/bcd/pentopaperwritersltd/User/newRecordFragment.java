@@ -1,20 +1,34 @@
 package com.barakadanie.bcd.pentopaperwritersltd.User;
 
+import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.barakadanie.bcd.pentopaperwritersltd.R;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 
 /**
@@ -23,9 +37,17 @@ import com.google.android.material.textfield.TextInputEditText;
  * create an instance of this fragment.
  */
 public class newRecordFragment extends Fragment {
-    TextInputEditText name,tAmount;
+    TextInputEditText name,tAmount,date;
     TextInputEditText editText;
-    Spinner category,bookName;
+    Spinner bookCategory,bookName;
+    List<String> categoryList;
+    TextView header;
+    private String categ,bName;
+    ImageView back;
+    private DrawerLayout drawerLayout;
+    DatePickerDialog datePickerDialog;
+    DatePickerDialog.OnDateSetListener onDateSetListener;
+    private Toolbar toolba;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -38,15 +60,6 @@ public class newRecordFragment extends Fragment {
     public newRecordFragment() {
         // Required empty public constructor
     }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment newRecordFragment.
-     */
     // TODO: Rename and change types and number of parameters
     public static newRecordFragment newInstance(String param1, String param2) {
         newRecordFragment fragment = new newRecordFragment();
@@ -63,20 +76,109 @@ public class newRecordFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
     }
 
 
+    @SuppressLint("SetTextI18n")
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_new_record, container, false);
+        toolba=view.findViewById(R.id.toolbar);
+        back=view.findViewById(R.id.back);
+        header=view.findViewById(R.id.pageHeader);
+        header.setText("Add New Record");
 
-        // Initialize the views
-        tAmount = view.findViewById(R.id.totalAmount);
-        tAmount.setFocusable(true);
-        tAmount.setClickable(true);
+        bookCategory=view.findViewById(R.id.category);
+        bookName=view.findViewById(R.id.bookName);
+        bookCategory.setPadding(10,20,10,10);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.bookTypes, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        bookCategory.setAdapter(adapter);
+        date=view.findViewById(R.id.date);
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar calendar=Calendar.getInstance();
+                int year=calendar.get(Calendar.YEAR);
+                int month=calendar.get(Calendar.MONTH);
+                int day=calendar.get(Calendar.DAY_OF_MONTH);
+                datePickerDialog=new DatePickerDialog(getContext(),onDateSetListener,year,month,day);
+                datePickerDialog.show();
+            }
+        });
+        onDateSetListener= (datePicker, year, month, day) -> {
+            month=month+1;
+            date.setText(day+"/"+month+"/"+year);
+        };
+        bookCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                categ = adapterView.getItemAtPosition(i).toString();
+                if(categ.equals("Bible Stories"))
+                {
+                    bookName.setPadding(10,20,10,10);
+                    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.BibleStories, android.R.layout.simple_spinner_item);
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+                    bookName.setAdapter(adapter);
+                    bookName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                            bName = adapterView.getItemAtPosition(i).toString();
+                        }
 
+                        @Override
+                        public void onNothingSelected(AdapterView<?> adapterView) {
 
-        // Rest of your code for the fragment
+                        }
+                    });
+                }
+                else if (categ.equals("Bedtime Stories"))
+                {
+                    bookName.setPadding(10,20,10,10);
+                    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.BedtimeStories, android.R.layout.simple_spinner_item);
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+                    bookName.setAdapter(adapter);
+                    bookName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                            bName = adapterView.getItemAtPosition(i).toString();
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+
+                        }
+                    });
+                }
+                else if (categ.equals("Activity Workbooks"))
+                {
+                    bookName.setPadding(10,20,10,10);
+                    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.ActivityWorkbooks, android.R.layout.simple_spinner_item);
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+                    bookName.setAdapter(adapter);
+                    bookName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                            bName = adapterView.getItemAtPosition(i).toString();
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, categoryList);
+//        category.setAdapter(adapter);
+
         return view;
     }
 }

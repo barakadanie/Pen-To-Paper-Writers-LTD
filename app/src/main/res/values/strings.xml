@@ -20,7 +20,45 @@
     <string name="enter_sales_records_here">Enter Sales Records Here</string>
     <string name="select_book_category">Select Book Category</string>
     <string name="select_book_name">Select Book Name</string>
-    <string name="amount">Amount</string>
-    <string name="name">Name</string>
+    <string name="amount">Amount of Books Given</string>
+    <string name="name">My Target Sale</string>
     <string name="add">Add</string>
+    <string name="title">title</string>
+    <string name="todo">TODO</string>
+    <string name="choose_date">Choose Date</string>
+    <string-array name="bookTypes">
+        <item>Select Book Category</item>
+        <item>Bible Stories</item>
+        <item>Bedtime Stories</item>
+        <item>Activity Workbooks</item>
+    </string-array>
+    <string-array name="BibleStories">
+        <item>Select Book Name</item>
+        <item>In The Beginning</item>
+        <item>Adam &amp; Eve</item>
+        <item>Cain &amp; Abel</item>
+        <item>Noah\'s ARk</item>
+        <item>Abraham Faith Tested</item>
+        <item>The 10 Plaques</item>
+        <item>The Burning Bush</item>
+        <item>The Tower of Babel</item>
+    </string-array>
+    <string-array name="BedtimeStories">
+        <item>Select Book Name</item>
+        <item>The Magical Story of Rapunzel</item>
+        <item>Snow White</item>
+    </string-array>
+    <string-array name="ActivityWorkbooks">
+        <item >Select Book Name</item>
+        <item>Animals</item>
+        <item>Numbers</item>
+        <item>Alphabets</item>
+        <item>Vowels</item>
+        <item>Coloring Book</item>
+        <item>Parts of the Body</item>
+        <item>Sehemu Za Mwili</item>
+        <item>Shapes</item>
+        <item>ALphabet Chart</item>
+        <item>Weather</item>
+    </string-array>
 </resources>

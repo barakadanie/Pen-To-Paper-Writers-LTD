@@ -61,6 +61,7 @@
             android:inputType="textPassword"
             android:drawableEnd="@drawable/baseline_lock_24"
             android:ellipsize="start"
+            app:passwordToggleEnabled="true"
             android:background="@drawable/textinput"
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
