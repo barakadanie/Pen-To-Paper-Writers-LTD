@@ -59,7 +59,7 @@
             android:layout_gravity="center"
             >
 
-            <com.jaredrummler.materialspinner.MaterialSpinner
+            <Spinner
                 android:id="@+id/category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -73,7 +73,7 @@
                 android:layout_marginRight="24dp"
                 android:popupBackground="@color/white"
                 android:spinnerMode="dropdown"
-                android:background="@drawable/spinner_outline" />
+                android:background="@drawable/textinput" />
 
             <ImageView
                 android:id="@+id/dropdown1"
